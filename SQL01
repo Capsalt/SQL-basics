@@ -1,0 +1,24 @@
+CREATE TABLE workers
+(
+	id CHAR(5),
+	name VARCHAR2(50),
+	salary NUMBER(5),
+	CONSTRAİNT id4_pk PRİMARY KEY(id)
+);
+
+INSERT INTO workers VALUES(10001, 'Ali Can', 12000);
+INSERT INTO workers VALUES(10002, 'Veli Han', 2000);
+INSERT INTO workers VALUES(10003, 'Mary Star', 7000);
+INSERT INTO workers VALUES(10004, 'Angie Ocean', 8500);
+
+SELECT * FROM workers;
+
+SELECT MAX(salary)
+FROM workers;
+WHERE salary < (SELECT MAX(salary) FROM workers));
+
+SELECT *
+FROM workers
+ORDER BY salary DESC
+OFFSET 2 ROW
+FETCH NEXT 1 ROW ONLY;
