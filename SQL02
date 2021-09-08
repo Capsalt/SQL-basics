@@ -1,0 +1,35 @@
+CREATE TABLE workers
+(
+	id CHAR(3) PRIMARY KEY,
+	isim VARCHAR2(50),
+	maas NUMBER(5)
+);
+
+INSERT INTO workers VALUES ('101','Ali',5000);
+INSERT INTO workers VALUES ('102','Veli',8000);
+INSERT INTO workers VALUES ('103','Ayse',6000);
+
+SELECT * FROM workers
+WHERE id BETWEEN '101' AND '103';
+
+SELECT * FROM workers
+WHERE maas IN (5000,6000);
+
+CREATE TABLE musteriler
+(
+	m_id CHAR(3),
+	yas NUMBER(2),
+	adres VARCHAR2(50),
+	CONSTRAINT id_fk FOREIGN KEY (m_id) REFERENCES workers (id)
+);
+
+INSERT INTO musteriler VALUES ('101',25,'ANKARA');
+INSERT INTO musteriler VALUES ('202',35,'IZMIR');
+INSERT INTO musteriler VALUES ('543',29,'ISTANBUL');
+
+UPDATE musteriler
+SET yas = 32
+WHERE m_id ='543';
+
+
+
